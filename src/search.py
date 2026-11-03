@@ -1,7 +1,9 @@
 import os
+
 from dotenv import load_dotenv
-from src.vectorstore import FaissVectorStore
 from langchain_groq import ChatGroq
+
+from src.vectorstore import FaissVectorStore
 
 load_dotenv()
 

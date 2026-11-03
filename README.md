@@ -1,6 +1,6 @@
    # Complete RAG Course
 
-   Senior AI Engineer Portfolio Project | Retrieval-Augmented Generation with LangChain
+   Senior AI Engineer Portfolio Project | Retrieval Augmented Generation with LangChain
 
    This repository is a practical, portfolio-ready implementation of a Retrieval-Augmented Generation (RAG) system built in Python. It demonstrates the core workflow of modern AI applications: ingest documents, split and embed them, store vector representations, retrieve semantically relevant context, and ground LLM responses in domain-specific information.
 
