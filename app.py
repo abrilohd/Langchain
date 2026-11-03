@@ -1,7 +1,8 @@
+import os
+
 from src.data_loader import load_all_documents
 from src.embedding import EmbeddingPipeline
 from src.vectorstore import FaissVectorStore
-import os
 
 if __name__ == "__main__":
     docs = load_all_documents("data")

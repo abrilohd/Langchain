@@ -1,12 +1,13 @@
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from langchain_community.document_loaders import (
-    PyPDFLoader,
-    TextLoader,
     CSVLoader,
     Docx2txtLoader,
-    UnstructuredExcelLoader,
     JSONLoader,
+    PyPDFLoader,
+    TextLoader,
+    UnstructuredExcelLoader,
 )
 
 
