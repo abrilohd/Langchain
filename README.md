@@ -1,188 +1,171 @@
-# Complete RAG Course
+   # Complete RAG Course
 
-A practical, beginner-friendly course for learning how to build
-Retrieval-Augmented Generation (RAG) applications with Python and LangChain.
+   Senior AI Engineer Portfolio Project | Retrieval-Augmented Generation with LangChain
 
-RAG improves a language model's answers by retrieving relevant information from
-your own documents and adding that information to the model's context before
-generating a response.
+   This repository is a practical, portfolio-ready implementation of a Retrieval-Augmented Generation (RAG) system built in Python. It demonstrates the core workflow of modern AI applications: ingest documents, split and embed them, store vector representations, retrieve semantically relevant context, and ground LLM responses in domain-specific information.
 
-## What you will learn
+   The project reflects the kind of engineering work I focus on as a senior AI engineer: clean modular architecture, reproducible setup, vector search experimentation, and production-oriented design patterns for AI systems.
 
-By working through this repository, you will learn how to:
+   ## Current status
 
-- Load documents from text files and other common formats.
-- Understand LangChain's `Document` structure and metadata.
-- Split large documents into useful chunks.
-- Create embeddings that represent the meaning of text.
-- Store and search embeddings with a vector database.
-- Retrieve relevant context for a user question.
-- Build the basic RAG pipeline:
+   This repository is no longer just a learning example. It is a functioning RAG prototype and engineering sample with the following implemented capabilities:
 
-  ```text
-  Documents -> Load -> Split -> Embed -> Store
-                                      |
-  Question  -> Embed -> Retrieve <----+
-                         |
-                         v
-                  Language model -> Answer
-  ```
+   - Document ingestion from PDF, TXT, CSV, Excel, SQL, and JSON-like sources
+   - LangChain document processing and chunking workflows
+   - Embedding generation using sentence-transformers
+   - Vector storage with FAISS
+   - Metadata-aware search and retrieval
+   - Groq-compatible LLM integration path
+   - Notebook-based experimentation and pipeline exploration
+   - Modular project structure suitable for extension into a production-ready AI assistant
 
-## Project structure
+   ## Why this project matters
 
-```text
-Complete_RAG_Course/
-├── data/
-│   ├── simple_1.txt       # Introductory RAG example
-│   └── simple_2.txt       # Embeddings and vector search
-├── notebook/
-│   └── document.ipynb     # Document ingestion exercises
-├── main.py                # Python entry point
-├── pyproject.toml         # Project metadata and dependencies
-├── requirements.txt       # pip-compatible dependency list
-└── uv.lock               # Reproducible uv dependency lock file
-```
+   RAG systems are one of the most valuable patterns in applied AI today because they connect foundation models to enterprise knowledge without retraining the model. This repo showcases the engineering fundamentals behind that pattern:
 
-## Requirements
+   - Data ingestion and normalization
+   - Chunking strategies for long-form documents
+   - Semantic indexing and retrieval
+   - Prompt grounding for better answer quality
+   - Practical experimentation with model and retrieval choices
 
-- Python 3.14 or newer
-- [uv](https://docs.astral.sh/uv/) (recommended) or `pip`
-- Jupyter-compatible support for running the notebook
+   ## Architecture
 
-The project currently focuses on document ingestion and the foundations of a
-RAG pipeline. A model provider API key is not required for the introductory
-document-loading exercises.
+   ```text
+   Documents
+     -> Loaders (PDF, TXT, CSV, Excel, etc.)
+     -> Chunking
+     -> Embeddings
+     -> Vector Store (FAISS)
+     -> Retrieval
+     -> LLM Context Assembly
+     -> Answer Generation
+   ```
 
-## Setup with uv
+   This is the foundation of a grounded AI system: the model answers from retrieved context instead of relying only on its internal memory.
 
-From the project directory, create the environment and install dependencies:
+   ## Tech stack
 
-```powershell
-uv sync
-```
+   - Python
+   - LangChain and LangChain Community
+   - SentenceTransformers
+   - FAISS
+   - ChromaDB
+   - PyMuPDF / PyPDF
+   - scikit-learn
+   - Groq LLM integration
+   - Jupyter notebooks
 
-Activate the environment if you want to run commands directly inside it:
+   ## Project structure
 
-```powershell
-.venv\Scripts\activate
-```
+   ```text
+   Complete_RAG_Course/
+   ├── app.py                 # Main application entry point for vectorized document search
+   ├── main.py                # Lightweight startup / environment validation entry
+   ├── data/
+   │   ├── pdf/               # PDF source documents for retrieval examples
+   │   ├── text_file/         # Plain-text sample documents
+   │   └── vector_store/      # Local vector store artifacts
+   ├── faiss_store/           # Persisted FAISS index and metadata
+   ├── notebook/
+   │   ├── document.ipynb     # Exploratory notebook for document ingestion
+   │   └── pdf_loader.ipynb   # PDF handling experiments
+   ├── src/
+   │   ├── data_loader.py     # Multi-format document loading pipeline
+   │   ├── embedding.py        # Embedding and chunking logic
+   │   ├── search.py          # Retrieval and LLM summarization logic
+   │   ├── vectorstore.py     # FAISS vector database wrapper
+   │   └── __init__.py
+   ├── pyproject.toml         # Project metadata and dependencies
+   ├── requirements.txt       # pip install dependencies
+   ├── uv.lock                # Reproducible lock file for uv
+   ├── .env                   # Local environment variables (not committed)
+   └── README.md              # Project overview and portfolio documentation
+   ```
 
-## Setup with pip
+   ## What this project demonstrates
 
-Create and activate a virtual environment, then install the dependencies:
+   This repository presents the following senior-level AI engineering competencies:
 
-```powershell
-python -m venv .venv
-.venv\Scripts\activate
-python -m pip install -r requirements.txt
-```
+   - Building data pipelines for unstructured knowledge sources
+   - Designing retrieval workflows for grounded AI systems
+   - Managing embedding and vector search infrastructure
+   - Creating modular, extensible Python code for AI applications
+   - Structuring experimentation around real-world knowledge retrieval
+   - Preparing a portfolio project that shows depth beyond toy demos
 
-## Start learning
+   ## Quick start
 
-1. Open [`notebook/document.ipynb`](notebook/document.ipynb).
-2. Run the cells from top to bottom.
-3. Begin with the `Document` example to understand page content and metadata.
-4. Continue with the directory loader to load the sample files in [`data/`](data/).
-5. Add your own `.txt` files to `data/` and experiment with loading them.
-6. Next, practice chunking, embeddings, vector search, retrieval, and answer
-   generation as those lessons are added.
+   ### 1. Clone and install
 
-When running the notebook, use this path for the current sample files:
+   ```powershell
+   git clone <repository-url>
+   cd Complete_RAG_Course
+   python -m venv .venv
+   .venv\Scripts\activate
+   python -m pip install -r requirements.txt
+   ```
 
-```python
-from langchain_community.document_loaders import DirectoryLoader, TextLoader
+   ### 2. Or use uv
 
-loader = DirectoryLoader(
-    path="../data",
-    glob="**/*.txt",
-    loader_cls=TextLoader,
-    loader_kwargs={"encoding": "utf-8"},
-)
-documents = loader.load()
-```
+   ```powershell
+   uv sync
+   .venv\Scripts\activate
+   ```
 
-If you open the notebook from a different working directory, adjust the
-relative path so it points to the repository's `data` folder.
+   ### 3. Run the app
 
-## Run the Python entry point
+   ```powershell
+   uv run python app.py
+   ```
 
-The current entry point is a small environment check:
+   This builds or loads the FAISS index and prepares the repository for semantic search and retrieval workflows.
 
-```powershell
-uv run python main.py
-```
+   ## Example workflow
 
-It should print:
+   ```python
+   from src.data_loader import load_all_documents
+   from src.embedding import EmbeddingPipeline
+   from src.vectorstore import FaissVectorStore
 
-```text
-Hello from complete-rag-course!
-```
+   # Load content
+   texts = load_all_documents("data")
 
-The main RAG exercises currently live in the notebook and will be built into
-the Python entry point as the course progresses.
+   # Create vector store
+   pipeline = EmbeddingPipeline()
+   chunks = pipeline.chunk_documents(texts)
+   embeddings = pipeline.embed_chunks(chunks)
 
-## Sample data
+   store = FaissVectorStore("faiss_store")
+   store.add_embeddings(embeddings, [chunk.metadata for chunk in chunks])
+   store.save()
+   ```
 
-The two included files are intentionally short and easy to inspect:
+   ## Portfolio positioning
 
-- [`data/simple_1.txt`](data/simple_1.txt) explains the purpose of RAG.
-- [`data/simple_2.txt`](data/simple_2.txt) explains embeddings and vector
-  similarity.
+   This project is positioned as a demonstration of applied AI engineering skills:
 
-Short documents make it easier to see exactly what a loader returns before
-moving on to larger files and more advanced retrieval strategies.
+   - AI system design for retrieval-grounded interactions
+   - Data engineering for document-based knowledge systems
+   - Python development for ML and LLM workflows
+   - Vector search and semantic retrieval fundamentals
+   - Practical understanding of how AI systems are built beyond prompt engineering
 
-## Useful commands
+   ## Future improvements
 
-```powershell
-# Install or update the locked environment
-uv sync
+   The next evolution of this project would include:
 
-# Run the Python entry point
-uv run python main.py
+   - Hybrid retrieval combining semantic and keyword search
+   - Better metadata filtering and source attribution
+   - API layer for QA over documents
+   - LangGraph orchestration for multi-step reasoning
+   - Evaluation pipeline for retrieval quality and answer relevance
+   - Streamlit or FastAPI front end for a user-facing demo
 
-# Launch Jupyter
-uv run jupyter notebook
-```
+   ## Notes
 
-## Troubleshooting
+   This repository is designed as a working technical portfolio artifact and a practical foundation for building production-grade RAG applications. It balances conceptual clarity with implementation depth and can be extended into a real document Q&A system, internal knowledge assistant, or enterprise search prototype.
 
-### `ModuleNotFoundError`
+   ## License
 
-Make sure the virtual environment is active, or run the command through uv:
-
-```powershell
-uv run python main.py
-```
-
-### The notebook cannot find the data files
-
-Relative paths are resolved from the notebook's working directory. Start
-Jupyter from the repository root and use `../data` when the notebook is inside
-the `notebook` folder. If your editor uses a different working directory,
-update the loader path accordingly.
-
-### Text encoding errors
-
-Save text files as UTF-8 and keep the loader configuration:
-
-```python
-loader_kwargs={"encoding": "utf-8"}
-```
-
-## Contributing to your own learning
-
-Try changing one part of the pipeline at a time. For each experiment, record:
-
-- Which documents were loaded.
-- How the documents were split.
-- Which retrieval method was used.
-- Whether the retrieved context actually answered the question.
-
-This makes it easier to understand why a RAG application succeeds or produces
-an incomplete answer.
-
-## License
-
-This repository is intended for educational use. Add a project-specific
-license before redistributing it.
+   This project is intended for portfolio, learning, and engineering experimentation. If you plan to reuse or redistribute it, add a project-specific license to match your intended use case.
